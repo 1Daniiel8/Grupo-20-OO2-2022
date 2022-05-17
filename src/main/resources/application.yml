@@ -1,20 +1,13 @@
 spring:
-  mvc:
-    contentnegotiation:
-      favor-parameter: true
-      media-types:
-        pdf: application/pdf
   datasource:
-    url: jdbc:mysql://localhost:3306/grupo-20-oo2-2022
-    username: root  
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Grupo-20-OO2-2022
+    username: root
     password: 
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-      naming:
-        strategy: org.hibernate.cfg.ImprovedNaming.Strategy
     properties:
-      dialect: org.hibernate.dialect.MySQL5Dialect
-  thymeleaf:
-    cache: false
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    
