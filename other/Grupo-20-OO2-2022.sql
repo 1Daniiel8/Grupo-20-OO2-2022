@@ -1,1 +1,1 @@
-create schema if not exists `Grupo-23-BDD-OO2-2022`;
+create schema if not exists `Grupo-20-OO2-2022`;
