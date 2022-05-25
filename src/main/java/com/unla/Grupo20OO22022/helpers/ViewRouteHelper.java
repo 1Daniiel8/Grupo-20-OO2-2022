@@ -9,6 +9,7 @@ public class ViewRouteHelper {
 		public final static String HOME_INDEX = "home/index";
 		public final static String HOME_LOGIN = "home/login";
 		public final static String HOME_LOGOUT = "home/logout";
+		public final static String HOME_ABOUT_US = "home/about-us";
 		
 	// REDIRECT
 		public final static String HOME_ROUTE = "redirect:/";

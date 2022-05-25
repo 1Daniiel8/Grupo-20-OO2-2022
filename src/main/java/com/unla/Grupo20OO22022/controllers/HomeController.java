@@ -14,11 +14,18 @@ import com.unla.Grupo20OO22022.helpers.ViewRouteHelper;
 @RequestMapping("/")
 public class HomeController {
 
+
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.HOME_INDEX);
 		return modelAndView;
 	}
+	
+	@GetMapping("/about-us")
+	public String aboutUs() {
+		return ViewRouteHelper.HOME_ABOUT_US;
+	}
+	
 	@GetMapping("/login")
 	public String login(Model model, 
 			                         @RequestParam(name = "error", required = false) String error,
