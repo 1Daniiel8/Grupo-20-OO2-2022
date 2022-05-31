@@ -14,7 +14,6 @@ import com.unla.Grupo20OO22022.helpers.ViewRouteHelper;
 @RequestMapping("/")
 public class HomeController {
 
-
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.HOME_INDEX);

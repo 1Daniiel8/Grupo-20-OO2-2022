@@ -6,10 +6,10 @@ public class PerfilModel {
 	
 	private long idPerfil;
 	
-	@NotEmpty(message="El tipo no puede estar vacio")
+	@NotEmpty(message="El tipo no puede ser un campo vacio")
 	private String tipo;
 	
-	public PerfilModel(long idPerfil, String tipo) {
+	public PerfilModel(long idPerfil,@NotEmpty(message="El tipo no puede ser un campo vacio") String tipo) {
 		super();
 		this.idPerfil = idPerfil;
 		this.tipo = tipo;
@@ -17,7 +17,7 @@ public class PerfilModel {
 	
 	public PerfilModel() {}
 	
-	public PerfilModel(String tipo) {
+	public PerfilModel(@NotEmpty(message="El tipo no puede ser un campo vacio") String tipo) {
 		super();
 		this.tipo = tipo;
 	}
@@ -36,7 +36,7 @@ public class PerfilModel {
 
 	@Override
 	public String toString() {
-		return tipo;
+		return "Perfil: " + tipo + " ";
 	}
 	
 	
