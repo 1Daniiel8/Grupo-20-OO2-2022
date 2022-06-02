@@ -28,6 +28,8 @@ public class UsuarioService implements UserDetailsService {
 	@Qualifier("usuarioRepository")
 	private IUsuarioRepository usuarioRepository;
 	
+	//-----------------------------------------LOGIN---------------------------------------------------------
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = usuarioRepository.findByUsernameWithPerfil(username);
