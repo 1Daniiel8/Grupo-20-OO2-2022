@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import com.unla.Grupo20OO22022.services.IPersonaService;
 public class PersonaController {
 	
 	@Autowired
+	@Qualifier("personaService")
 	private IPersonaService iPersonaService;
 	
 	@GetMapping("/listarPersonas")
