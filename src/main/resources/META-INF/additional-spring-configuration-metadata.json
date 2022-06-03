@@ -1,0 +1,62 @@
+{"properties": [
+  {
+    "name": "spring.jpa.contentnegotiation",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.contentnegotiation'"
+  },
+  {
+    "name": "spring.jpa.favor-parameter",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.favor-parameter'"
+  },
+  {
+    "name": "spring.jpa.mvc",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.mvc'"
+  },
+  {
+    "name": "spring.jpa.hibernate.naming.strategy",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.hibernate.naming.strategy'"
+  },
+  {
+    "name": "spring.jpa.media-types.pdf",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.media-types.pdf'"
+  },
+  {
+    "name": "loggin.config",
+    "type": "java.lang.String",
+    "description": "A description for 'loggin.config'"
+  },
+  {
+    "name": "loggin.exception-conversion-word",
+    "type": "java.lang.String",
+    "description": "A description for 'loggin.exception-conversion-word'"
+  },
+  {
+    "name": "loggin.path",
+    "type": "java.lang.String",
+    "description": "A description for 'loggin.path'"
+  },
+  {
+    "name": "loggin.pattern.console",
+    "type": "java.lang.String",
+    "description": "A description for 'loggin.pattern.console'"
+  },
+  {
+    "name": "loggin.file",
+    "type": "java.lang.String",
+    "description": "A description for 'loggin.file'"
+  },
+  {
+    "name": "spring.jpa.thymeleaf",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.thymeleaf'"
+  },
+  {
+    "name": "spring.jpa.cache",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.cache'"
+  }
+]}

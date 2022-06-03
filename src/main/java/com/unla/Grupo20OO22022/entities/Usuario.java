@@ -81,6 +81,11 @@ public class Usuario extends Persona{
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+
+	public long getId_usuario() {
+		
+		return idPersona;
+	}
 	
 	
 	

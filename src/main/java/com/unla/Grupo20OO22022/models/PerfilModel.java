@@ -38,6 +38,10 @@ public class PerfilModel {
 	public String toString() {
 		return tipo;
 	}
+
+	public boolean isEnabled() {
+		return true;
+	}
 	
 	
 	

@@ -12,5 +12,9 @@ public class ViewRouteHelper {
 		
 	// REDIRECT
 		public final static String HOME_ROUTE = "redirect:/";
+		public final static String USUARIOS = "/listar"; 
+		
+	// USUARIO
+		public final static String FORM_USUARIO = "/form";
 
 }

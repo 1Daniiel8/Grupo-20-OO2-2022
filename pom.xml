@@ -38,28 +38,33 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>2.4.5</version>
+			<version>2.4.5</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.23</version>
+			<version>8.0.23</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-
+		<!--  agregue esta dependecia pero sigue sin funcionar -->
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+    		<version>5.0.7.Final</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>6.2.0.Final</version>
+			<version>6.2.0.Final</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>5.4.6</version>
+			<version>5.4.6</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		
 		<dependency>
