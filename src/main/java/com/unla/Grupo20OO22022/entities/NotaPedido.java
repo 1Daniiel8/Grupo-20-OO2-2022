@@ -1,6 +1,6 @@
 package com.unla.Grupo20OO22022.entities;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,14 +24,15 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 @DynamicInsert(true)
 @DynamicUpdate(true)
-@Table(name = "notaPedido")
-public class NotaPedido {
+@Table(name = "notapedido")
+@Inheritance(strategy = InheritanceType.JOINED)//HACE QUE SE CREEN TABLAS SEPARADAS DE LAS CLASES HIJA EN SQL
+public abstract class NotaPedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idNota;
 	
 	@Column(name = "fecha")
-	private LocalDate fecha;
+	private Date fecha;
 	
 	@Column(name = "turno")
 	private char turno;
@@ -43,8 +46,8 @@ public class NotaPedido {
 	@Column(name = "porcentajeDeEstudiantes")
 	private int porcentajeDeEstudiantes;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-	@JoinColumn(name = "materia_idMateria", nullable = false)
+	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@JoinColumn(name = "idMateria", nullable = false)
 	private Materia materia;
 	
 	@Column(name = "observaciones")
@@ -60,7 +63,7 @@ public class NotaPedido {
 	
 	public NotaPedido() {}
 
-	public NotaPedido(int idNota, LocalDate fecha, char turno, String aula, String profesor,
+	public NotaPedido(int idNota, Date fecha, char turno, String aula, String profesor,
 			int porcentajeDeEstudiantes, Materia materia, String observaciones) {
 		super();
 		this.idNota = idNota;
@@ -73,7 +76,7 @@ public class NotaPedido {
 		this.observaciones = observaciones;
 	}
 	
-	public NotaPedido(LocalDate fecha, char turno, String aula, String profesor,
+	public NotaPedido(Date fecha, char turno, String aula, String profesor,
 			int porcentajeDeEstudiantes, Materia materia, String observaciones) {
 		this.fecha = fecha;
 		this.turno = turno;
@@ -82,6 +85,15 @@ public class NotaPedido {
 		this.porcentajeDeEstudiantes = porcentajeDeEstudiantes;
 		this.materia = materia;
 		this.observaciones = observaciones;
+	}
+	public NotaPedido(Date fecha, char turno, String aula, String profesor,
+			int porcentajeDeEstudiantes, Materia materia) {
+		this.fecha = fecha;
+		this.turno = turno;
+		this.aula = aula;
+		this.profesor = profesor;
+		this.porcentajeDeEstudiantes = porcentajeDeEstudiantes;
+		this.materia = materia;
 	}
 
 	public int getIdNota() {
@@ -92,11 +104,11 @@ public class NotaPedido {
 		this.idNota = idNota;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

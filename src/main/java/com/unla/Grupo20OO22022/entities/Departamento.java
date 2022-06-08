@@ -21,7 +21,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class Departamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idDepartamento;
+	private long idDepartamento;
 	
 	@Column(name = "departamento")
 	private String departamento;
@@ -36,7 +36,7 @@ public class Departamento {
 	
 	public Departamento() {}
 
-	public Departamento(int idDepartamento, String departamento) {
+	public Departamento(long idDepartamento, String departamento) {
 		super();
 		this.idDepartamento = idDepartamento;
 		this.departamento = departamento;
@@ -47,11 +47,11 @@ public class Departamento {
 		this.departamento = departamento;
 	}
 
-	public int getIdDepartamento() {
+	public long getIdDepartamento() {
 		return idDepartamento;
 	}
 
-	protected void setIdDepartamento(int idDepartamento) {
+	protected void setIdDepartamento(long idDepartamento) {
 		this.idDepartamento = idDepartamento;
 	}
 

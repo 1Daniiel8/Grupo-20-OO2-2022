@@ -25,7 +25,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class Carrera {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCarrera;
+	private long idCarrera;
 	
 	@Column(name = "carrera")
 	private String carrera;
@@ -44,7 +44,7 @@ public class Carrera {
 	
 	public Carrera() {}
 
-	public Carrera(int idCarrera, String carrera, Departamento departamento) {
+	public Carrera(long idCarrera, String carrera, Departamento departamento) {
 		super();
 		this.idCarrera = idCarrera;
 		this.carrera = carrera;
@@ -56,11 +56,11 @@ public class Carrera {
 		this.departamento = departamento;
 	}
 
-	public int getIdCarrera() {
+	public long getIdCarrera() {
 		return idCarrera;
 	}
 
-	protected void setIdCarrera(int idCarrera) {
+	protected void setIdCarrera(long idCarrera) {
 		this.idCarrera = idCarrera;
 	}
 
@@ -94,6 +94,31 @@ public class Carrera {
 
 	public void setUpdateAt(LocalDateTime updateAt) {
 		this.updateAt = updateAt;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((carrera == null) ? 0 : carrera.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Carrera other = (Carrera) obj;
+		if (carrera == null) {
+			if (other.carrera != null)
+				return false;
+		} else if (!carrera.equals(other.carrera))
+			return false;
+		return true;
 	}
 	
 }

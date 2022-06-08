@@ -1,31 +1,32 @@
 package com.unla.Grupo20OO22022.models;
 
-import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
+import javax.validation.constraints.NotEmpty;
 
 public class DepartamentoModel {
 	
-	private int idDepartamento;
+	private long idDepartamento;
 	
-	@NotNull(message="Departamento no puede ser estar vacio")
+	@NotEmpty(message= "El departamento no puede estar vacio.")
 	private String departamento;
 
 	public DepartamentoModel() {}
 	
-	public DepartamentoModel(int idDepartamento,
-			@NotNull(message = "Departamento no puede ser estar vacio") String departamento) {
+	public DepartamentoModel(long idDepartamento, String departamento) {
 		super();
 		this.idDepartamento = idDepartamento;
 		this.departamento = departamento;
 	}
-	public DepartamentoModel(@NotNull(message = "Departamento no puede ser estar vacio") String departamento) {
+	public DepartamentoModel(String departamento) {
 		this.departamento = departamento;
 	}
 
-	public int getIdDepartamento() {
+	public long getIdDepartamento() {
 		return idDepartamento;
 	}
 
-	public void setIdDepartamento(int idDepartamento) {
+	public void setIdDepartamento(long idDepartamento) {
 		this.idDepartamento = idDepartamento;
 	}
 
@@ -41,8 +42,22 @@ public class DepartamentoModel {
 	public String toString() {
 		return "DepartamentoModel :" + departamento;
 	}
-	
-	
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(departamento);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DepartamentoModel other = (DepartamentoModel) obj;
+		return Objects.equals(departamento, other.departamento);
+	}
 
 }

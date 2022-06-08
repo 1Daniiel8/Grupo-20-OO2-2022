@@ -28,7 +28,7 @@ import com.unla.Grupo20OO22022.models.PerfilModel;
 public class PerfilController {
 	
 	@Autowired
-	private IPerfilService service;
+	private IPerfilService perfilService;
 	
 	@GetMapping("/")
 	public String index(Model model) {
@@ -37,7 +37,7 @@ public class PerfilController {
 	
 	@GetMapping("/listarPerfil")
 	public String listar(Model model, @RequestParam(name = "error", required = false) String error) {
-		List<PerfilModel> perfiles = service.listar();
+		List<PerfilModel> perfiles = perfilService.listar();
 		model.addAttribute("perfiles",perfiles);
 		model.addAttribute("error", error);
 		return ViewRouteHelper.PERFILES;
@@ -45,7 +45,7 @@ public class PerfilController {
 	
 	@GetMapping("/editar/{idPerfil}")
 	public String editar(@PathVariable long idPerfil,Model model) {
-		PerfilModel perfil = service.traerId(idPerfil);
+		PerfilModel perfil = perfilService.traerId(idPerfil);
 		model.addAttribute("perfil", perfil);
 		return ViewRouteHelper.PROFILE_FORM;
 	}
@@ -60,7 +60,7 @@ public class PerfilController {
 	public ModelAndView save(@Valid @ModelAttribute("perfil") PerfilModel perfilModel, BindingResult result, RedirectAttributes redirAttrs) {
 
 		ModelAndView mAV;
-		PerfilModel exis = service.traerTipo(perfilModel.getTipo());
+		PerfilModel exis = perfilService.traerTipo(perfilModel.getTipo());
 		
 		if(exis!=null) {
 			FieldError error = new FieldError("persona", "dni", "Ya existe una persona con el dni ingresado");
@@ -69,7 +69,7 @@ public class PerfilController {
 		} else if (result.hasErrors()) {
 			mAV = new ModelAndView(ViewRouteHelper.PROFILE_FORM);
 		} else {
-			service.insertOrUpdate(perfilModel);
+			perfilService.insertOrUpdate(perfilModel);
 			redirAttrs.addFlashAttribute("success", perfilModel.toString()+" agregado exitosamente.");
 	       	mAV = new ModelAndView(ViewRouteHelper.HOME_ROUTE);
 		}
@@ -79,8 +79,8 @@ public class PerfilController {
 	@PostMapping("/eliminar/{idPerfil}")
 	public String delete(@PathVariable long idPerfil, Model model) {
 		
-		if(!service.delete(idPerfil)) {
-			return ViewRouteHelper.ROUTE_PERFILES+"?error=Error al intertar borrar el perfil: "+service.traerId(idPerfil).getTipo()+""
+		if(!perfilService.delete(idPerfil)) {
+			return ViewRouteHelper.ROUTE_PERFILES+"?error=Error al intertar borrar el perfil: "+perfilService.traerId(idPerfil).getTipo()+""
 					+ ", ya que tiene usuarios asignados.";
 		}else {
 			return ViewRouteHelper.ROUTE_PERFILES;

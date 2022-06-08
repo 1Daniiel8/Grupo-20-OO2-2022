@@ -1,5 +1,7 @@
 package com.unla.Grupo20OO22022.models;
 
+import java.util.Objects;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -77,6 +79,21 @@ public class MateriaModel {
 		return "Materia :" + materia + " de la carrera:" + carrera;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(codMateria);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MateriaModel other = (MateriaModel) obj;
+		return codMateria == other.codMateria;
+	}
 
 }

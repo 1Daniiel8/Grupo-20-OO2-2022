@@ -1,5 +1,6 @@
 package com.unla.Grupo20OO22022.models;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotEmpty;
@@ -13,30 +14,32 @@ public class NotaPedidoModel {
 	private int idNota;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate fecha;
+	private Date fecha;
 	
-	@NotEmpty(message= "El turno no puede ser vacio.")
 	private char turno;
 	
 	@NotEmpty(message= "El aula no puede ser vacio.")
 	private String aula;
 	
-	@NotEmpty(message= "El profesor no puede ser vacio.")
+	@NotEmpty(message= "Tiene q haber un profesor al menos.")
 	private String profesor;
 	
-	@NotEmpty(message= "El porcentaje no puede ser vacio.")
+	@NotNull
 	private int porcentajeDeEstudiantes;
 	
-	@NotNull
 	private MateriaModel materia;
 	
+	@NotEmpty(message= "ESTE CAMPO NO PUEDE ESTAR VACIO.")
 	private String observaciones;
 	
-	
-	public NotaPedidoModel() {}
+	@NotEmpty(message = "Debe selecionar una fecha de inicio valida.")
+	private String fechaString;
 
+	public NotaPedidoModel() {
+		fechaString = Date.valueOf(LocalDate.now()).toString();
+	}
 
-	public NotaPedidoModel(int idNota, LocalDate fecha, @NotEmpty(message = "El turno no puede ser vacio.") char turno,
+	public NotaPedidoModel(int idNota, Date fecha, @NotEmpty(message = "El turno no puede ser vacio.") char turno,
 			@NotEmpty(message = "El aula no puede ser vacio.") String aula,
 			@NotEmpty(message = "El profesor no puede ser vacio.") String profesor,
 			@NotEmpty(message = "El porcentaje no puede ser vacio.") int porcentajeDeEstudiantes, MateriaModel materia,
@@ -53,7 +56,7 @@ public class NotaPedidoModel {
 	}
 
 
-	public NotaPedidoModel(LocalDate fecha, @NotEmpty(message = "El turno no puede ser vacio.") char turno,
+	public NotaPedidoModel(Date fecha, @NotEmpty(message = "El turno no puede ser vacio.") char turno,
 			@NotEmpty(message = "El aula no puede ser vacio.") String aula,
 			@NotEmpty(message = "El profesor no puede ser vacio.") String profesor,
 			@NotEmpty(message = "El porcentaje no puede ser vacio.") int porcentajeDeEstudiantes, MateriaModel materia,
@@ -79,12 +82,12 @@ public class NotaPedidoModel {
 	}
 
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
@@ -148,6 +151,13 @@ public class NotaPedidoModel {
 		this.observaciones = observaciones;
 	}
 
+	public String getFechaString() {
+		return fechaString;
+	}
+
+	public void setFechaString(String fechaString) {
+		this.fechaString = fechaString;
+	}
 
 	@Override
 	public String toString() {
