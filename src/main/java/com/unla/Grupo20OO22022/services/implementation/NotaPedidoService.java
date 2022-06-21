@@ -86,14 +86,17 @@ public class NotaPedidoService implements INotaPedidoService {
 	}
 
 	@Override
-	public boolean remove(int id) {
-		try {
-			notaRepository.deleteById(id);
-			return true;
-		} catch (Exception e) {
-			return false;
+	public List<NotaPedidoModel> findAllByProfesor(String profesor) {
+		List<NotaPedidoModel> permisos = new ArrayList<NotaPedidoModel>();
+		
+		for (NotaPedido nota : notaRepository.findByProfesor(profesor)) {	
+				if (nota instanceof Final)
+					permisos.add(finalConverter.entityToModel((Final) nota));
+				else if (nota instanceof Curso)
+					permisos.add(cursoConverter.entityToModel((Curso) nota));
 		}
+		return permisos;
 	}
-	
+
 
 }

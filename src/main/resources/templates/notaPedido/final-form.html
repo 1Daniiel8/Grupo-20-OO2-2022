@@ -8,7 +8,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link th:href="@{../../css/style.css}" rel="stylesheet">
-	<title>Nota Pedido - Nuevo</title>
+	<title th:text="${add} ? 'Crear Nota' : 'Editar Nota'"></title>
 </head>
 
 <body class="masthead">
@@ -20,33 +20,45 @@
 	<div class="row m-5 main">
 		<div class="col-md-8 mx-auto">
 			
-			<form th:action="@{/nota/final/save}" th:object="${notaPedido}" method="POST" class="row g-3">
+			<form th:action="${add} ? @{/nota/final/save} : @{/nota/final/edit}" th:object="${notaPedido}" method="POST" class="row g-3">
+			
+			<div th:unless="${add}">
+					<input type="hidden" th:field="*{idNota}" />
+			    	<input type="hidden" th:field="*{profesor}"/>
+			    	<input type="hidden" th:field="*{aula}"/>
+			    	<input type="hidden" th:field="*{turno}"/>
+			    	<input type="hidden" th:field="*{porcentajeDeEstudiantes}"/>
+			    	<input type="hidden" th:field="*{Materia.idMateria}"/>
+			    	<input type="hidden" th:field="*{fecha}"/>
+			    	<input type="hidden" th:field="*{observaciones}"/>
+			    	<input type="hidden" th:field="*{duracion}"/>
+			    </div>
 				
-				<div class="col-md-6 form-group">
+				<div th:if="${add}" class="col-md-6 form-group">
 					<label class="form-label">Profesor</label>
 					<input type="text" class="form-control" th:field="*{profesor}" />
 					<small class="form-text text-danger" th:if="${#fields.hasErrors('profesor')}" th:errors="*{profesor}"></small>
                     </div>
                     
-                    <div class="col-md-6 form-group">
+                    <div th:if="${add}" class="col-md-6 form-group">
                        <label class="form-label">Aula</label>
 						<input type="text" class="form-control" th:field="*{aula}"/>
 						<small class="form-text text-danger" th:if="${#fields.hasErrors('aula')}" th:errors="*{aula}"></small>
                     </div>
                     
-                    <div class="col-md-6 form-group">
+                    <div th:if="${add}" class="col-md-6 form-group">
                         <label class="form-label"> Turno </label>
 						<input type="text" class="form-control" placeholder="M/T/N" th:field="*{turno}"/>
 						<small class="form-text text-danger" th:if="${#fields.hasErrors('turno')}" th:errors="*{turno}"></small>
                     </div>
                    
-                    <div class="col-md-6 form-group">
+                    <div th:if="${add}" class="col-md-6 form-group">
                         <label class="form-label"> Porcentaje de Estudiantes </label>
 						<input type="text" class="form-control" placeholder="100" th:field="*{porcentajeDeEstudiantes}" /></p>
 						<small class="form-text text-danger" th:if="${#fields.hasErrors('porcentajeDeEstudiantes')}" th:errors="*{porcentajeDeEstudiantes}"></small>
                     </div>
 
-				    <div class="col-md-6 form-group">
+				    <div th:if="${add}" class="col-md-6 form-group">
 					    <label class="form-label">Materia</label> 
 					    <select th:field="*{materia.idMateria}" class="form-select">
 						    <option th:each="m : ${materias}" th:value="${m.idMateria}"
@@ -55,13 +67,13 @@
 					    <small class="form-text text-danger"th:if="${#fields.hasErrors('materia')}" th:errors="*{materia}"></small>
 				    </div>
 
-				    <div class="form-group col">
+				    <div th:if="${add}" class="form-group col">
 				        <label class="form-label">Fecha</label>
 				        <input id="date-input" class="form-control" type="date" th:field="*{fechaString}" th:attr="min=${hoy}" >
 				        <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaString')}" th:errors="*{fechaString}"></small>
 			        </div>
 							
-				    <div class="row mt-3">
+				    <div th:if="${add}" class="row mt-3">
 			            <div class="form-group col">
 				            <label class="form-label">Observaciones</label>
 				            <input class="form-control" type="text" th:field="*{observaciones}">
@@ -69,15 +81,21 @@
 			            </div>
 		           </div>      
 		           
-		           <div class="col-md-6 form-group">
+		           <div th:if="${add}" class="col-md-6 form-group">
                         <label class="form-label"> Duracion (Hs)</label>
 						<input type="number" class="form-control" th:field="*{duracion}" /></p>
 						<small class="form-text text-danger" th:if="${#fields.hasErrors('duracion')}" th:errors="*{duracion}"></small>
                     </div>
+                    
+                    <div th:unless="${add}" class="col-md-6 form-group">
+                        <label class="form-label"> Aprobado </label>
+						<select th:field="*{aprobado}" class="form-select">
+							<option th:each="aprobado : ${T(com.unla.Grupo20OO22022.enums.Aprobado).values()}" th:value="${aprobado}" th:text="${aprobado}"></option>
+						</select>
+                    </div>
 			                 
-				   <div class="card-footer">
-						<input type="submit" value="Guardar" class="btn btn-success">
-				   </div>
+				   <div th:if="${add}" ><input type="submit" class="btn btn-primary" value="Crear"/></div>
+				   <div th:unless="${add}"><input type="submit" class="btn btn-primary" value="Editar"/></div>
             </form>
         </div>
     </div>

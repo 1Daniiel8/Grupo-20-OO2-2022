@@ -52,7 +52,7 @@ public class CarreraModel {
 
 	@Override
 	public String toString() {
-		return "Carrera -> Carrera: " + carrera + "  Departamento:" + departamento;
+		return carrera+"["+departamento+"]";
 	}
 
 	@Override

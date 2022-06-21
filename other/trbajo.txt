@@ -1,0 +1,6 @@
+-Agregar atributo "aprobado" char
+-Modificar vista de form-(notaPedido) para que el ROLE admin pueda editar  el atributo de aprobado
+-Agregar vista de Solicitudes para que el Usuario pueda ver, y si desea eliminar, las nota pedido realizadas y ver su estado
+
+EXTRA
+-Agregar un filtro q busque entre notaPedido con atributo en Si o No 

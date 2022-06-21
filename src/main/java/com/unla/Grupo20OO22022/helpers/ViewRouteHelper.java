@@ -15,6 +15,8 @@ public class ViewRouteHelper {
 		public final static String NOTA_CURSO_FORM ="notaPedido/curso-form";
 		public final static String NOTA_FINAL_FORM ="notaPedido/final-form";
 		public final static String NOTA_LISTA = "notaPedido/listar";
+		public final static String NOTA_CURSO_A = "notaPedido/curso-approve";
+		public final static String NOTA_FINAL_A = "notaPedido/final-approve";
 		
 	//PROFILE
 		public final static String PERFILES = "profile/listaPerfiles";

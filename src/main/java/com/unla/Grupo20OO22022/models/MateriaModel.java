@@ -76,7 +76,7 @@ public class MateriaModel {
 
 	@Override
 	public String toString() {
-		return "Materia :" + materia + " de la carrera:" + carrera;
+		return  materia+"("+carrera+")";
 	}
 
 	@Override

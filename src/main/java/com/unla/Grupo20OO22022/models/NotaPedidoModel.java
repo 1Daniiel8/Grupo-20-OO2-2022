@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.sun.istack.NotNull;
+import com.unla.Grupo20OO22022.enums.Aprobado;
 
 public class NotaPedidoModel {
 	
@@ -34,6 +35,8 @@ public class NotaPedidoModel {
 	
 	@NotEmpty(message = "Debe selecionar una fecha de inicio valida.")
 	private String fechaString;
+	
+	private Aprobado aprobado; 
 
 	public NotaPedidoModel() {
 		fechaString = Date.valueOf(LocalDate.now()).toString();
@@ -53,6 +56,7 @@ public class NotaPedidoModel {
 		this.porcentajeDeEstudiantes = porcentajeDeEstudiantes;
 		this.materia = materia;
 		this.observaciones = observaciones;
+		this.aprobado = Aprobado.Desaprobado;
 	}
 
 
@@ -69,6 +73,7 @@ public class NotaPedidoModel {
 		this.porcentajeDeEstudiantes = porcentajeDeEstudiantes;
 		this.materia = materia;
 		this.observaciones = observaciones;
+		this.aprobado = Aprobado.Desaprobado;
 	}
 
 
@@ -159,18 +164,21 @@ public class NotaPedidoModel {
 		this.fechaString = fechaString;
 	}
 
+	public Aprobado getAprobado() {
+		return aprobado;
+	}
+
+	public void setAprobado(Aprobado aprobado) {
+		this.aprobado = aprobado;
+	}
+
 	@Override
 	public String toString() {
-		return "NotaPedidoModel [fecha=" + fecha + ", turno=" + turno + ", aula=" + aula + ", profesor=" + profesor
-				+ ", porcentajeDeEstudiantes=" + porcentajeDeEstudiantes + ", materia=" + materia + ", observaciones="
-				+ observaciones + "]";
+		return "NotaPedidoModel [idNota=" + idNota + ", fecha=" + fecha + ", turno=" + turno + ", aula=" + aula
+				+ ", profesor=" + profesor + ", porcentajeDeEstudiantes=" + porcentajeDeEstudiantes + ", materia="
+				+ materia + ", observaciones=" + observaciones + ", fechaString=" + fechaString + ", aprobado="
+				+ aprobado + "]";
 	}
-	
-	
-	
-	
-	
-	
 	
 
 }

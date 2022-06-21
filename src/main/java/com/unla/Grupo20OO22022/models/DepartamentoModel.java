@@ -40,7 +40,7 @@ public class DepartamentoModel {
 
 	@Override
 	public String toString() {
-		return "DepartamentoModel :" + departamento;
+		return departamento;
 	}
 
 	@Override

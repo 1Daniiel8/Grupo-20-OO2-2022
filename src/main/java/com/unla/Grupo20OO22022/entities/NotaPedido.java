@@ -21,6 +21,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.unla.Grupo20OO22022.enums.Aprobado;
+
 @Entity
 @DynamicInsert(true)
 @DynamicUpdate(true)
@@ -53,6 +55,9 @@ public abstract class NotaPedido {
 	@Column(name = "observaciones")
 	private String observaciones;
 	
+	@Column(name = "aprobado")
+	private Aprobado aprobado;
+	
 	@Column(name = "createat")
 	@CreationTimestamp
 	private LocalDateTime createAt;
@@ -74,6 +79,7 @@ public abstract class NotaPedido {
 		this.porcentajeDeEstudiantes = porcentajeDeEstudiantes;
 		this.materia = materia;
 		this.observaciones = observaciones;
+		this.aprobado = Aprobado.Desaprobado;
 	}
 	
 	public NotaPedido(Date fecha, char turno, String aula, String profesor,
@@ -85,6 +91,7 @@ public abstract class NotaPedido {
 		this.porcentajeDeEstudiantes = porcentajeDeEstudiantes;
 		this.materia = materia;
 		this.observaciones = observaciones;
+		this.aprobado = Aprobado.Desaprobado;
 	}
 	public NotaPedido(Date fecha, char turno, String aula, String profesor,
 			int porcentajeDeEstudiantes, Materia materia) {
@@ -158,6 +165,14 @@ public abstract class NotaPedido {
 
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
+	}
+
+	public Aprobado getAprobado() {
+		return aprobado;
+	}
+
+	public void setAprobado(Aprobado aprobado) {
+		this.aprobado = aprobado;
 	}
 
 	public LocalDateTime getCreateAt() {

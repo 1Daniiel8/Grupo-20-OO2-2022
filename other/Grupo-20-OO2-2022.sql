@@ -25,8 +25,6 @@ insert into usuario(email, password, username, id_persona, perfil_id_perfil)
 values("usuario@gmail.com.ar","$2a$10$ePhKPkFp.Uti3gy3HI5PcupVWrckG3cEhKgbma62mjulO/K.GoalS", "user", 2, 2 );
 
 
-SELECT * FROM Materia;
-SELECT * FROM departamento;
-SELECT * FROM Carrera;
-SELECT * FROM notapedido;
-SELECT * FROM curso;
+SELECT * from Usuario;
+SELECT * from NOTAPEDIDO;
+SELECT * from CURSO;

@@ -31,6 +31,8 @@
 						<th scope="col">Fecha</th>
 						<th scope="col">Observaciones</th>
 						<th scope="col">codCurso</th>
+						<th scope="col">Aprobado</th>
+						<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,6 +45,10 @@
 						<td th:text="${c.fecha}"></td>
 						<td class="col-3" th:text="${c.observaciones}"></td>
 						<td th:text="${c.codCurso}"></td>
+						<td th:text="${c.aprobado}"></td>
+						<td sec:authorize="hasRole('ROLE_ADMIN')">
+						<div class="d-flex"><a th:href="@{curso/aprobar(idNota=${c.idNota})}" class="btn btn-danger">Editar</a></div>
+					</td>
 					</tr>
 				</tbody>
 			</table>
@@ -59,6 +65,8 @@
 						<th scope="col">Fecha</th>
 						<th scope="col">Observaciones</th>
 						<th scope="col">Duracion</th>
+						<th scope="col">Aprobado</th>
+						<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
 
 					</tr>
 				</thead>
@@ -72,6 +80,10 @@
 						<td th:text="${f.fecha}"></td>
 						<td class="col-3" th:text="${f.observaciones}"></td>
 						<td th:text="${f.duracion}"></td>
+						<td th:text="${f.aprobado}"></td>
+						<td sec:authorize="hasRole('ROLE_ADMIN')">
+						<div class="d-flex"><a th:href="@{final/aprobar(idNota=${f.idNota})}" class="btn btn-danger">Editar</a></div>
+					</td>
 					</tr>
 				</tbody>
 			</table>
